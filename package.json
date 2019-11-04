@@ -1,0 +1,27 @@
+{
+  "name": "@howtcards/image-uploader",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/howtocards/image-uploader.git"
+  },
+  "author": "Sergey Sova <mail@sergeysova.com> (https://sergeysova.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/howtocards/image-uploader/issues"
+  },
+  "homepage": "https://github.com/howtocards/image-uploader#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6-alpha.6",
+    "mkdirp": "^0.5.1",
+    "nanoid": "^2.1.6"
+  }
+}
