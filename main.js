@@ -45,21 +45,21 @@ async function save(name, file) {
   const id = nanoid(ID_LENGTH)
   debug("saving file ", file.name, id)
 
-  const ext = getExtension(file.name)
-
-  const dir = await createDirectory()
-  debug("created dir", dir)
-
-  const path = `${dir}/${id}.${ext}`
-
   try {
+    const ext = getExtension(file.name)
+
+    const dir = await createDirectory()
+    debug("created dir", dir)
+
+    const path = `${dir}/${id}.${ext}`
+
     await move(file, `${VOLUME}${path}`)
     debug("saved file to", path)
 
     return UPLOAD_OK({ path, name })
   } catch (error) {
     debug("failed to move", error)
-    return UPLOAD_FAILED({ name, error })
+    return UPLOAD_FAILED({ name, error: String(error) })
     // return save(file)
   }
 }
