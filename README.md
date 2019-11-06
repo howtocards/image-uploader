@@ -1,5 +1,23 @@
 # image-uploader
 
+## Setup
+
+```sh
+yarn
+```
+
+## Configuration
+
+with env variables
+
+- **VOLUME** — relative or absolute path where to save files. default `./files`
+- **LISTEN_PORT** — port where to start http server. default `4000`
+
+## Development
+
+- `yarn start` — run uploader server
+- `CTRL+C` — stop server
+
 ## API
 
 ### `POST /upload`

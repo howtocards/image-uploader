@@ -6,9 +6,11 @@ const mkdirp = util.promisify(require("mkdirp"))
 const nanoid = require("nanoid")
 const debug = require("debug")("image-uploader")
 
-const VOLUME = path.resolve("./files")
+const VOLUME = path.resolve(process.env.VOLUME || "./files")
 const ID_LENGTH = 30
-const LISTEN_PORT = 4000
+const LISTEN_PORT = process.env.LISTEN_PORT
+  ? parseInt(process.env.LISTEN_PORT, 10)
+  : 4000
 
 const NO_UPLOADS = () => ({ error: "no_uploads" })
 const UPLOAD_OK = ({ path, name }) => ({ ok: true, path, name })
@@ -18,9 +20,16 @@ const RESULT = ({ status, files }) => ({ status, files })
 const app = express()
 app.use(fileUpload())
 app.post("/upload", handler)
-app.listen(LISTEN_PORT, () => {
-  console.log("Start listening", LISTEN_PORT)
+
+const server = app.listen(LISTEN_PORT, () => {
+  console.log("Listening port", LISTEN_PORT)
 })
+
+process.on("SIGINT", () => {
+  console.log("Stopping server")
+  server.close()
+})
+
 async function handler(req, res) {
   const fileNames = Object.keys(req.files)
   debug("request to upload ", fileNames)
