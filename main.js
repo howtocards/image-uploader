@@ -55,6 +55,7 @@ async function save(name, file) {
 
     await move(file, `${VOLUME}${path}`)
     debug("saved file to", path)
+    console.log("uploader: ", path)
 
     return UPLOAD_OK({ path, name })
   } catch (error) {
