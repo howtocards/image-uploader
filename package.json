@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node main"
   },
   "repository": {
@@ -23,5 +23,8 @@
     "express-fileupload": "^1.1.6-alpha.6",
     "mkdirp": "^0.5.1",
     "nanoid": "^2.1.6"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }
