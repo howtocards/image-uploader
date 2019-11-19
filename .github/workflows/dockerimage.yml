@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Build latest image
-        if: github.ref == master
+        if: github.ref == 'refs/heads/master'
         run: docker build . --tag howtocards/image-uploader:latest
 
       - name: Build dev image
-        if: github.ref == dev
+        if: github.ref == 'refs/heads/dev'
         run: docker build . --tag howtocards/image-uploader:dev
