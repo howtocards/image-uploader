@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - dev
+  pull_request:
 
 jobs:
   dev:
@@ -32,3 +33,10 @@ jobs:
 
       - name: Push image
         run: docker push howtocards/image-uploader:latest
+
+  check:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/pull/')
+    steps:
+      - name: Build image
+        run: docker build .
