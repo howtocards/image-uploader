@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+    tags:
+      - '!refs/tags/*'
+  pull_request:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev'
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Publish Docker
+        uses: elgohr/Publish-Docker-Github-Action@2.8
+        with:
+          name: howtocards/image-uploader
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          snapshot: true
+          tagging: ${{contains(github.ref, 'refs/tags/v')}}
