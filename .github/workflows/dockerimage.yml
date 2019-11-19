@@ -5,8 +5,9 @@ on:
     branches:
       - master
       - dev
+  release:
     tags:
-      - '!refs/tags/*'
+      - v*
   pull_request:
 
 jobs:
