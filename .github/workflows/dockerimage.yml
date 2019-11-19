@@ -6,14 +6,12 @@ on:
       - master
       - dev
   release:
-    tags:
-      - v*
   pull_request:
 
 jobs:
   docker:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master' || startsWith(github.ref === 'refs/tags/v')
 
     steps:
       - uses: actions/checkout@v1
