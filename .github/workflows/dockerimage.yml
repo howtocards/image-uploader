@@ -2,23 +2,21 @@ name: Docker Image CI
 
 on:
   push:
-    branches: 
+    branches:
       - master
       - dev
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-      
-    - name: Build latest image
-      if: github.ref == "master"
-      run: docker build . --tag howtocards/image-uploader:latest
-      
-    - name: Build dev image
-      if: github.ref == "dev"
-      run: docker build . --tag howtocards/image-uploader:dev
+      - uses: actions/checkout@v1
+
+      - name: Build latest image
+        if: github.ref == master
+        run: docker build . --tag howtocards/image-uploader:latest
+
+      - name: Build dev image
+        if: github.ref == dev
+        run: docker build . --tag howtocards/image-uploader:dev
