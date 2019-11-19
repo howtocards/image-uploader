@@ -22,8 +22,8 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@2.8
         with:
           name: howtocards/image-uploader/image-uploader
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: sergeysova
+          password: ${{ secrets.GITHUB_TOKEN }}
           snapshot: true
           tagging: ${{contains(github.ref, 'refs/tags/v')}}
           registry: docker.pkg.github.com
