@@ -21,7 +21,7 @@ jobs:
       - name: Publish Docker
         uses: elgohr/Publish-Docker-Github-Action@2.8
         with:
-          name: howtocards/image-uploader/howtocards/image-uploader
+          name: howtocards/image-uploader/image
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           snapshot: true
