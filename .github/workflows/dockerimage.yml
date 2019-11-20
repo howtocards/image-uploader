@@ -6,7 +6,7 @@ on:
       - master
       - dev
     tags:
-      - v*
+      - "v*.*.*"
   release:
   pull_request:
 
@@ -27,3 +27,4 @@ jobs:
           snapshot: true
           tagging: ${{contains(github.ref, 'refs/tags/v')}}
           registry: docker.pkg.github.com
+          tag_names: true
