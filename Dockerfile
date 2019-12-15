@@ -9,7 +9,6 @@ COPY main.js ./
 
 VOLUME /storage
 ENV VOLUME=/storage
-
-EXPOSE 4000
+ENV LISTEN_PORT=4000
 
 CMD yarn start
